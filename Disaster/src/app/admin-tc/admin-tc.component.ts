@@ -17,9 +17,13 @@ export class AdminTCComponent implements OnInit {
     this._TimecardService.getTimecard().subscribe(data => this.timeCards=data, error => this.errorMsg = error);
   }
 
-  onClick(){
-    
-   // this._TimecardService.createTimecard(this.timecardForm.value).subscribe(data =>console.log(data),error =>console.log(error))
+  approve(id:string){
+    console.log("in method")
+    this._TimecardService.updateTimecard(id).subscribe(data => console.log(data), error => this.errorMsg = error);
+  }
+  deny(id:string){
+    console.log("in method")
+    this._TimecardService.deleteTimecard(id).subscribe(data => console.log(data), error => this.errorMsg = error);
   }
 
 }
