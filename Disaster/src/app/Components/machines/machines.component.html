@@ -1,0 +1,27 @@
+
+<br/>
+<h4 style="text-align:left">Machine Management</h4>
+<div class="container">
+<table class="table table-boarder">
+  <thead>
+    <tr>
+      <th>Machine code</th>
+      <th>Description</th>
+      <th>Hourly Rent/Hr</th>
+      <th>Max.Hours per day<br/>Hr</th>
+      <th></th>
+      <th></th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor ="let m of machines">
+        <td>{{m.code}}</td>
+        <td>{{m.description}}</td>
+        <td>{{m.rent|currency}}</td>    
+        <td>{{m.maxHours}}</td>
+        <td><button (click)="userEdit(user, i)">Edit</button></td> 
+        <td><button (click)="userEdit(user, i)">Delete</button></td>  
+     </tr>
+</tbody>
+</table>
+</div>
