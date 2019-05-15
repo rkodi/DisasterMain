@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const jobs = require('./Routes/jobs');
 const machines = require('./Routes/machines')
 const timecards = require('./Routes/timeCards')
-//const users = require('./routes/user.route')
+const users = require('./Routes/users')
 const cors = require('cors');
 
 app.use(cors());
@@ -13,7 +13,7 @@ app.get('/', function(req, res) {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
     res.setHeader('Access-Control-Allow-Credentials', true); // If needed
-
+    app.use("/",users)
     res.send('cors problem fixed:)');
 });
 app.use("/", jobs)
