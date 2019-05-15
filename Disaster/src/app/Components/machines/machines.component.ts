@@ -20,12 +20,5 @@ export class MachinesComponent implements OnInit {
 
   }
 
-  userEdit(user, i) {
-    this._machineservice.setValue({
-      index: i,
-      username: user.username,
-      email: user.email
-    })
-  }
-
+  
 }
