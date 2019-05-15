@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MachineService } from '../../Services/machine.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-machines',
@@ -10,7 +11,7 @@ export class MachinesComponent implements OnInit {
   public machines=[];
   errorMsg;
 
-  constructor(private _machineservice:MachineService) { }
+  constructor(private router: Router,private _machineservice:MachineService) { }
 
   ngOnInit() {
     this._machineservice.getMachines()
@@ -18,6 +19,9 @@ export class MachinesComponent implements OnInit {
       error=>this.errorMsg=error);
       console.log(this._machineservice)
 
+  }
+  userEdit(){    
+    this.router.navigate(['/edit'])
   }
 
   

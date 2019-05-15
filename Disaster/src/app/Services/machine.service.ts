@@ -19,6 +19,11 @@ export class MachineService {
     return this.http.get<IMachines[]>(this._url);
 
   }
+
+  geMachines(): Observable<IMachines[]>{
+    return this.http.get<IMachines[]>(this._url);
+
+  }
   errorHandler(error:HttpErrorResponse){
     return throwError(error)
   }
