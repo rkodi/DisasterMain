@@ -1,3 +1,30 @@
-<div  *ngFor="let employee of employees">
+<!-- <div  *ngFor="let employee of employees">
   <app-display-employee [employee]="employee"></app-display-employee>
+</div> -->
+
+<br/>
+<h4 style="text-align:left">Machine Management</h4>
+<div class="container">
+<table class="table table-boarder">
+  <thead>
+    <tr>
+      <th>Job Code</th>
+      <th>Description</th>
+      <th>Hourly Rate</th>
+      <th>Max.Hours per day<br/>Hr</th>
+      <th></th>
+      <th></th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor ="let j of jobs">
+        <td>{{j.code}}</td>
+        <td>{{j.description}}</td>
+        <td>{{j.rate|currency}}</td>    
+        <td>{{j.maxHours}}</td>
+        <td><button (click)="userEdit(user, i)">Edit</button></td> 
+        <td><button (click)="userEdit(user, i)">Delete</button></td>  
+     </tr>
+</tbody>
+</table>
 </div>

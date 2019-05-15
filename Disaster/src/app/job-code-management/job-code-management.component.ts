@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { jobsService } from '../jobs.service';
 
 
 @Component({
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobCodeManagementComponent implements OnInit {
 
-  constructor() { }
+  public jobs=[];
+
+  constructor(private _JobsSer: jobsService) { }
 
   ngOnInit() {
+    this._JobsSer.create().subscribe (data => this.jobs=data,
+      error => this.errorMsg=error)
+    
   }
 
 }
