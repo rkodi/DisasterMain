@@ -1,14 +1,28 @@
-<h3>Add New Machine </h3>
-<div class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</div>
-<label>Machine Code:<input id="1" name="Code" type="text"></label><br/>
-<label>Description:<input id="2" name="Code" type="text" /></label><br/>
-<label>Hourly Rent/Hr:<input id="3" name="Code" type="text" /></label><br/>
-<label>Max.Hours per day:<input id="4" name="Code" type="text" /></label><br/>
-<button type="submit" (click)="add(Machine)">Add</button>
+<div class="col-md-3">
+  <h2>Add new Machine</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
 
-<a href="">Back to home</a>
-<!-- 
-<label>Machine Code <input id="1" #Code="ngModel" required class="form-control"
-  [class.is-invalid]="Code.invalid && Code.touched" name="Code" [(ngModel)]="machines.Code">
-<small class="text-danger" [class.d-none]="Code.valid || Code.untouched">Code is required</small><br />
-</label> -->
+    <div class="form-group">
+      <label>code:</label>
+      <input type="text" formControlName="code" placeholder="code" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Description:</label>
+      <input type="text" formControlName="description" placeholder="description" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>rent:</label>
+      <input type="text" formControlName="rent" placeholder="rent" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>maxHours:</label>
+      <input type="text" formControlName="maxHours" placeholder="maxHours" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-info">Add</button>
+    <a href="" type="submit" class="btn btn-info">Back to home</a>
+  </form>
+</div>

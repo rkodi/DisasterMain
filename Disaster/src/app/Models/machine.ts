@@ -5,6 +5,5 @@ export class Machines {
     description: String;
     rent: Number;
     maxHours: Number
-    // edit: string,
-    // delete: string
+    
 }

@@ -8,29 +8,34 @@ import { Observable, throwError } from 'rxjs';
 })
 export class MachineService {
   
-
-  private _url:string="http://localhost:4000/";
+  private putUrl:string =''
+  private _url:string="http://localhost:4000/machines/";
 
   constructor(private http:HttpClient) { }
 
   getMachines(): Observable<Machines[]>{
-    return this.http.get<Machines[]>(this._url+'machines');
+    return this.http.get<Machines[]>(this._url);
 
   }
   getMachinesbyId(id:string): Observable<Machines[]>{
-    return this.http.get<Machines[]>(this._url + 'machines' +'/'+ id);
+    return this.http.get<Machines[]>(this._url + id);
 
   }
   addmachine(newmachine: Machines): Observable<Machines>{
-    return this.http.post<Machines>(this._url, newmachine +'machines')
+    return this.http.post<Machines>(this._url, newmachine)
+  }
+  editMachine(body:any,id :string){
+     this.putUrl=this._url +id
+     console.log(this.putUrl)
+    return this.http.put(this.putUrl,body)
   }
 
-  updatemachine(newmachine: Machines): Observable<Machines>{
-    return this.http.put<Machines>(this._url +'machines' + '/'+'machine._id', newmachine);
+  updatemachine(id: string): Observable<Machines>{
+    return this.http.put<Machines>(this._url ,id);
   }
 
   deletemachine(id: string): Observable<Machines>{
-    return this.http.delete<Machines>(this._url + 'machines' + '/'+ id)
+    return this.http.delete<Machines>(this._url + id)
   }
   errorHandler(error:HttpErrorResponse){
     return throwError(error)

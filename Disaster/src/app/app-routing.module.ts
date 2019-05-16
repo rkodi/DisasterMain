@@ -5,10 +5,10 @@ import { AddComponent } from './Components/add/add.component';
 import { EditComponent } from './Components/edit/edit.component';
 
 const routes: Routes = [
-  // {path:'', redirectTo: '/edit',pathMatch:'full'},
+  {path:'', component: MachinesComponent, pathMatch:'full'},
   {path:'machines', component: MachinesComponent},
   {path:'add', component: AddComponent},
-  {path:'edit', component: EditComponent},
+  {path:'edit/:id', component: EditComponent}
 ];
 
 @NgModule({
