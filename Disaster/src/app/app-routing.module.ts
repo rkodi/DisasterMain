@@ -7,7 +7,7 @@ import { CreateNewJobCodeComponent } from './create-new-job-code/create-new-job-
 
 const routes: Routes = [
   { path: 'list', component: JobCodeManagementComponent },
-  { path: 'create', component: CreateNewJobCodeComponent },
+  { path: 'list/create', component: CreateNewJobCodeComponent },
   { path: '', redirectTo: '/list', pathMatch: 'full' }
 ];
 

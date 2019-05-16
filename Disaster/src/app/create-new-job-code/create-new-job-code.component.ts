@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { jobsService } from '../jobs.service';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-create-new-job-code',
@@ -11,7 +14,7 @@ export class CreateNewJobCodeComponent implements OnInit {
 
   JobCode: FormGroup;
 
-  constructor(private fb: FormBuilder, private _JobCode: jobsService) { }
+  constructor(private fb: FormBuilder, private _JobCode: jobsService, private router: Router) { }
 
   ngOnInit() {
 
@@ -24,6 +27,7 @@ export class CreateNewJobCodeComponent implements OnInit {
     });
     
   }
+  
   get newJobCode() {
     return this.JobCode.get('code');
   }
