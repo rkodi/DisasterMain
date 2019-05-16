@@ -10,11 +10,12 @@ import { jobsService } from '../jobs.service';
 export class JobCodeManagementComponent implements OnInit {
 
   public jobs=[];
+  errorMsg;
 
   constructor(private _JobsSer: jobsService) { }
 
   ngOnInit() {
-    this._JobsSer.create().subscribe (data => this.jobs=data,
+    this._JobsSer.createJobs().subscribe (data => this.jobs=data,
       error => this.errorMsg=error)
     
   }

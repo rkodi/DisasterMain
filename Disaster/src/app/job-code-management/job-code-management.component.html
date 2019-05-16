@@ -1,17 +1,17 @@
-<!-- <div  *ngFor="let employee of employees">
-  <app-display-employee [employee]="employee"></app-display-employee>
-</div> -->
 
-<br/>
-<h4 style="text-align:left">Machine Management</h4>
-<div class="container">
-<table class="table table-boarder">
+<h4 style="text-align:left">Job Code Management</h4>
+<button type="button" style="float: center;">Add New</button>
+<!-- <input type="button" value="Add" style="float: right;"> -->
+
+
+<div>
+<table style="width:60%">
   <thead>
     <tr>
       <th>Job Code</th>
       <th>Description</th>
       <th>Hourly Rate</th>
-      <th>Max.Hours per day<br/>Hr</th>
+      <th>Max.Hours P/D</th>
       <th></th>
       <th></th>
     </tr>
@@ -20,7 +20,7 @@
     <tr *ngFor ="let j of jobs">
         <td>{{j.code}}</td>
         <td>{{j.description}}</td>
-        <td>{{j.rate|currency}}</td>    
+        <td>{{j.rate |currency}}</td>    
         <td>{{j.maxHours}}</td>
         <td><button (click)="userEdit(user, i)">Edit</button></td> 
         <td><button (click)="userEdit(user, i)">Delete</button></td>  
