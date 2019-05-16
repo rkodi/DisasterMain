@@ -8,12 +8,14 @@ import { AdminTCComponent } from './admin-tc/admin-tc.component';
 import{TimecardService} from './timecard.service'
 import { HttpClientModule } from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ContractorTcSubmitComponent } from './contractor-tc-submit/contractor-tc-submit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminTCComponent,
-    ContractorTCComponent
+    ContractorTCComponent,
+    ContractorTcSubmitComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //import{Timecard} from '../Timecard';
 import {TimecardService} from '../timecard.service';
-import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-contractor-tc',
@@ -9,23 +9,16 @@ import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
   styleUrls: ['./contractor-tc.component.css']
 })
 export class ContractorTCComponent implements OnInit {
-  public timecardForm: FormGroup;
-  //model= new Timecard('code','contractor',3,4,false);
-  errorMsg="";
+  public timeCards=[];
+  public errorMsg;
 
-  constructor(private fb: FormBuilder, private _TimecardService: TimecardService) { }
+  constructor(private _TimecardService: TimecardService,private router:Router) { }
 
   ngOnInit() {
-    this.timecardForm = this.fb.group({
-      code:['',[Validators.required,Validators.minLength(3)]],
-      contractor:[""],
-      totalHours:[""],
-      totalAmount:[],
-      approved:[false]
-    })
+    this._TimecardService.getTimecard().subscribe(data => this.timeCards=data, error => this.errorMsg = error);
   }
-  onSubmit(){
-    this._TimecardService.createTimecard(this.timecardForm.value).subscribe(data =>{console.log(this.timecardForm.value);console.log(data)},error =>console.log(error))
+  newTimeCard(){
+    this.router.navigate(['contractor/submit']);
   }
-
 }
+

@@ -1,22 +1,26 @@
-<form [formGroup]="timecardForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label>Code</label>
-    <input type="text" formControlName="code" class="form-control">
-  </div>
+<h2>Timesheet Approval</h2>
+<h3>{{errorMsg}}</h3>
+<button (click)='newTimeCard()'>Create New Timecard</button>
+<table class="table table-border">
+  <thead>
+    <th>Site Code</th>
+    <th>Contractor Name</th>
+    <th>Total Hours</th>
+    <th>Total Amount</th>
+    <th>Status</th>
+  </thead>
+  <tbody>
+    <tr *ngFor='let cards of timeCards'>
+      <td>{{cards.code}}</td>
+      <td>{{cards.contractor}}</td>
+      <td>{{cards.totalHours}}</td>
+      <td>{{cards.totalAmount}}</td>
+      <td *ngIf= "cards.approved; else nameElseBlock">Finalized</td>
+        
+          <ng-template #nameElseBlock>
+        <td>Open</td>
+      </ng-template>
 
-  <div>
-    <label>Contractor</label>
-    <input type="text" formControlName="contractor" class="form-control">
-  </div>
-
-  <div>
-    <label>Total Hours</label>
-    <input type="number" formControlName="totalHours" class="form-control">
-  </div>
-
-  <div>
-    <label>Total Amount</label>
-    <input type="number" formControlName="totalAmount" class="form-control">
-  </div>
-  <button type="submit">Submit form</button>
-</form>
+    </tr>
+  </tbody>
+</table>

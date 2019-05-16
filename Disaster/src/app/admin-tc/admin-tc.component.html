@@ -10,7 +10,8 @@
     <th>Status</th>
   </thead>
   <tbody>
-    <tr *ngFor='let cards of timeCards'>
+    <tr *ngFor='let cards of timeCards; trackBy:trackByFn'>
+      <!-- <td>{{cards._id}}</td> -->
       <td>{{cards.code}}</td>
       <td>{{cards.contractor}}</td>
       <td>{{cards.totalHours}}</td>

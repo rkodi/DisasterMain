@@ -1,0 +1,22 @@
+<form [formGroup]="timecardForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Code</label>
+      <input type="text" formControlName="code" class="form-control">
+    </div>
+  
+    <div>
+      <label>Contractor</label>
+      <input type="text" formControlName="contractor" class="form-control">
+    </div>
+  
+    <div>
+      <label>Total Hours</label>
+      <input type="number" formControlName="totalHours" class="form-control">
+    </div>
+  
+    <div>
+      <label>Total Amount</label>
+      <input type="number" formControlName="totalAmount" class="form-control">
+    </div>
+    <button type="submit">Submit form</button>
+  </form>
