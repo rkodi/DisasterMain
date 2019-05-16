@@ -7,7 +7,6 @@ import { Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class MachineService {
-  
   private putUrl:string =''
   private _url:string="http://localhost:4000/machines/";
 
@@ -35,7 +34,9 @@ export class MachineService {
   }
 
   deletemachine(id: string): Observable<Machines>{
-    return this.http.delete<Machines>(this._url + id)
+    this.putUrl=this._url +id
+    console.log(this.putUrl)
+    return this.http.delete<Machines>(this.putUrl)
   }
   errorHandler(error:HttpErrorResponse){
     return throwError(error)

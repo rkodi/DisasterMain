@@ -23,6 +23,8 @@
         <td>{{m.rent|currency}}</td>    
         <td>{{m.maxHours}}</td>
        <td><button type="submit" (click)="edit(m._id)">Edit</button></td> 
+       <td><button type="submit" (click)="delete(m._id)">Delete</button></td> 
+
         <!-- <td><a routerLink="edit/id"  routerLinkActive="active">Edit</a></td> 
         <td><a routerLink="delete" routerLinkActive="active">Delete</a></td>   -->
      </tr>

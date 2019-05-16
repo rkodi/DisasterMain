@@ -11,14 +11,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class MachinesComponent implements OnInit {
   public machines: Machines[];
-  private id:string;
-  public editForm1 :boolean=false;
-  public editForm:FormGroup;
+  private id: string;
+  public editForm1: boolean = false;
+  public editForm: FormGroup;
   public body: any;
-  
+
   errorMsg;
 
-  constructor(private router: Router, private _machineservice: MachineService,private formbuilder:FormBuilder) { }
+  constructor(private router: Router, private _machineservice: MachineService, private formbuilder: FormBuilder) { }
 
   ngOnInit() {
     this.editForm = this.formbuilder.group({
@@ -38,27 +38,39 @@ export class MachinesComponent implements OnInit {
 
   edit(id: string) {
     this.id = id;
-    this.editForm1=true;
+    this.editForm1 = true;
+
+  }
+
+  delete(id: string) {
+    this.id = id;
+    console.log(this.id)
+      this._machineservice.deletemachine(this.id)
+      .subscribe(data => {
+        console.log(data),
+        error => this.errorMsg = error.statusText;
+        // this.router.navigate(['/machines']);
+      });
+  }
 
 
-    
-   }
-  onSubmit(){
+
+  onSubmit() {
     console.log(this.editForm.value)
     console.log(this.editForm.value._id)
-this._machineservice.editMachine(this.editForm.value,this.id)
-.subscribe(data => {
-  console.log(data),
-    error => this.errorMsg = error.statusText;
-  // this.router.navigate(['/machines']);
-});
+    this._machineservice.editMachine(this.editForm.value, this.id)
+      .subscribe(data => {
+        console.log(data),
+          error => this.errorMsg = error.statusText;
+        // this.router.navigate(['/machines']);
+      });
   }
 
-  userDelete(){    
-    this.router.navigate(['/add',this.machines])
+  userDelete() {
+    this.router.navigate(['/add', this.machines])
   }
 
-  updatemachine(){
+  updatemachine() {
     // localStorage.removeItem('id');
     // localStorage.setItem('id', id);
     this.router.navigate(['/'])
