@@ -1,9 +1,6 @@
 
 <h4 style="text-align:left">Job Code Management</h4>
-<button type="button" style="float: center;">Add New</button>
-<!-- <input type="button" value="Add" style="float: right;"> -->
-
-
+<button type="submit" style="float: center;">Add New</button>
 <div>
 <table style="width:60%">
   <thead>
@@ -22,9 +19,9 @@
         <td>{{j.description}}</td>
         <td>{{j.rate |currency}}</td>    
         <td>{{j.maxHours}}</td>
-        <td><button (click)="userEdit(user, i)">Edit</button></td> 
-        <td><button (click)="userEdit(user, i)">Delete</button></td>  
+        <td><button (click)="editJob()">Edit</button></td> 
+        <td><button class="btn btn-danger" (click)="deleteJob()">Delete</button></td>  
      </tr>
 </tbody>
 </table>
-</div>
+</div> 
