@@ -1,13 +1,14 @@
-<p>
-  add works!
-</p>
-<h2></h2>
-<!-- <ul>
-  <li *ngFor=" let m of addmachine">{{m.code}}</li>   
-</ul>
-<form (submit)="addContact()">
-  <input type="text" [(ngModel)]="addmachine" code="code">
-  <button type="submit">AddContact</button>
-</form> -->
- 
+<h3>Add New Machine </h3>
+<div class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</div>
+<label>Machine Code:<input id="1" name="Code" type="text"></label><br/>
+<label>Description:<input id="2" name="Code" type="text" /></label><br/>
+<label>Hourly Rent/Hr:<input id="3" name="Code" type="text" /></label><br/>
+<label>Max.Hours per day:<input id="4" name="Code" type="text" /></label><br/>
+<button type="submit" (click)="add(Machine)">Add</button>
+
 <a href="">Back to home</a>
+<!-- 
+<label>Machine Code <input id="1" #Code="ngModel" required class="form-control"
+  [class.is-invalid]="Code.invalid && Code.touched" name="Code" [(ngModel)]="machines.Code">
+<small class="text-danger" [class.d-none]="Code.valid || Code.untouched">Code is required</small><br />
+</label> -->

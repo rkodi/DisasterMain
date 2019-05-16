@@ -1,3 +1,9 @@
-<p>
-  edit works!
-</p>
+<h3>Edit Machine </h3>
+<div class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</div>
+<label>Machine Code:<input id="1" name="Code" type="text"></label><br/>
+<label>Description:<input id="2" name="Code" type="text" /></label><br/>
+<label>Hourly Rent/Hr:<input id="3" name="Code" type="text" /></label><br/>
+<label>Max.Hours per day:<input id="4" name="Code" type="text" /></label><br/>
+<button type="submit" (click)="Edit(Machine)">Edit</button>
+
+<a href="">Back to home</a>

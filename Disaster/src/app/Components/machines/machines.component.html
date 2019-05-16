@@ -22,8 +22,8 @@
         <td>{{m.description}}</td>
         <td>{{m.rent|currency}}</td>    
         <td>{{m.maxHours}}</td>
-        <td><button (click)="userEdit(user, i)">Edit</button></td> 
-        <td><button (click)="userEdit(user, i)">Delete</button></td>  
+        <td><button (click)="updatemachine(machine._id)">Edit</button></td> 
+        <td><button (click)="deletemachine(machine._id)">Delete</button></td>  
      </tr>
 </tbody>
 </table>
