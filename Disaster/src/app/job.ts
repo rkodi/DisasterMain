@@ -1,9 +1,10 @@
-export class User {
-    constructor(
-        code: string,
-        description: string,
-        rate: number,
-        maxHours: number,
-    ) {}
+export class Jobs {
+    
+        _id: string;
+        code: string;
+        description: string;
+        rate: number;
+        maxHours: number;
+   
 
 }
