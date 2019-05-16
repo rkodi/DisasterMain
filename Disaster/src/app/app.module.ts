@@ -15,7 +15,8 @@ import { CreateNewJobCodeComponent } from './create-new-job-code/create-new-job-
 import {MachinesComponent} from './Components/machines/machines.component';
 import {MachineService} from './Services/machine.service';
 import { EditComponent } from './Components/edit/edit.component';
-import { AddComponent } from './Components/add/add.component' 
+import { AddComponent } from './Components/add/add.component' ;
+import {jobsService} from './jobs.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { AddComponent } from './Components/add/add.component'
     ReactiveFormsModule,
     ReactiveFormsModule
   ],
-  providers: [TimecardService, MachineService],  
+  providers: [TimecardService, MachineService,jobsService],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
