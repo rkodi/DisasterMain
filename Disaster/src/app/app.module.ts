@@ -16,7 +16,7 @@ import {MachinesComponent} from './Components/machines/machines.component';
 import {MachineService} from './Services/machine.service';
 import { EditComponent } from './Components/edit/edit.component';
 import { AddComponent } from './Components/add/add.component' ;
-import {jobsService} from './jobs.service';
+import {jobsService} from './jobs.service'
 
 @NgModule({
   declarations: [
@@ -25,7 +25,10 @@ import {jobsService} from './jobs.service';
     ContractorTCComponent,
     ContractorTcSubmitComponent,
     JobCodeManagementComponent,
-    CreateNewJobCodeComponent
+    CreateNewJobCodeComponent,
+    MachinesComponent,
+    AddComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +41,3 @@ import {jobsService} from './jobs.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
-
-
-  ],
-  
