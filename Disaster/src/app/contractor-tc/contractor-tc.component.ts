@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-//import{Timecard} from '../Timecard';
 import {TimecardService} from '../timecard.service';
 import { Router} from '@angular/router';
 
