@@ -12,7 +12,13 @@ import { Router } from '@angular/router';
 })
 export class CreateNewJobCodeComponent implements OnInit {
 
-  JobCode: FormGroup;
+  public JobCode: FormGroup;
+  public body: any;
+
+  private id: string;
+  private editForm: boolean = false;
+
+  errorMsg;
 
   constructor(private fb: FormBuilder, private _JobCode: jobsService, private router: Router) { }
 
@@ -28,18 +34,20 @@ export class CreateNewJobCodeComponent implements OnInit {
     
   }
   
-  get newJobCode() {
-    return this.JobCode.get('code');
-  }
+  // get newJobCode() {
+  //   return this.JobCode.get('code');
+  // }
 
-  get Description() {
-    return this.JobCode.get('rate');
-  }
-  get maxHours() {
-    return this.JobCode.get('maxHours');
-  }
+  // get Description() {
+  //   return this.JobCode.get('rate');
+  // }
+  // get maxHours() {
+  //   return this.JobCode.get('maxHours');
+  // }
 
-  
+
+
+   
   onSubmit() {
     console.log(this.JobCode.value);
     this._JobCode.postJobs(this.JobCode.value)

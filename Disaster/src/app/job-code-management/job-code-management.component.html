@@ -30,8 +30,8 @@
         <td>{{j.description}}</td>
         <td>{{j.rate |currency}}</td>    
         <td>{{j.maxHours}}</td>
-        <td><button (click)="editJob()">Edit</button></td> 
-        <td><button class="btn btn-danger" (click)="deleteJob()">Delete</button></td>  
+        <td><button type="submit" (click)="editJob(j._id)">Edit</button></td> 
+        <td><button type="submit" class="btn btn-danger" (click)="deleteJob(j._id)">Delete</button></td>  
      </tr>
 </tbody>
 </table>

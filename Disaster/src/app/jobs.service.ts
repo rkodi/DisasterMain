@@ -9,30 +9,31 @@ import { throwError, Observable } from 'rxjs';
 })
 export class jobsService {
 
-
+  private _putUrl: string;
   _url = 'http://localhost:4000/Jobs';
   constructor(private _http: HttpClient) { }
 
-  createJobs(): Observable<Jobs[]> {
+  getJobs(): Observable<Jobs[]> {
     return this._http.get<Jobs[]>(this._url);
+  }
+
+  getJobsById(id: string): Observable<Jobs[]> {
+    return this._http.get<Jobs[]>(this._url + id);
   }
 
   postJobs(job: Jobs): Observable<Jobs[]> {
     return this._http.post<Jobs[]>(this._url, job);
   }
 
-  updatJobs(job: Jobs): Observable<Jobs[]> {
-    return this._http.put<Jobs[]>(this._url, job);
+  updatJobs(body: any, id: string): Observable<Jobs[]> {
+    this._putUrl = this._url + '/' + id
+    return this._http.put<Jobs[]>(this._putUrl, body);
   }
 
-  deleteJobs(job: Jobs): Observable<Jobs[]> {
-    return this._http.delete<Jobs[]>(this._url);
+  deleteJobs(id: string): Observable<Jobs[]> {
+    this._putUrl = this._url + '/' + id
+    return this._http.delete<Jobs[]>(this._putUrl);
   }
-
-  // createJobs(job: Jobs) {
-  //   return this._http.post<any>(this._url, job)
-  //    .pipe(catchError(this.errorHandler))
-  // }
 
   errorHandler(error: HttpErrorResponse) {
     return throwError(error)

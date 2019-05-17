@@ -9,15 +9,37 @@ import { jobsService } from '../jobs.service';
 })
 export class JobCodeManagementComponent implements OnInit {
 
-  public jobs=[];
+  public jobs=[]; 
+  public body: any;
+
+  private id: string;
+  private editForm: boolean = false;
+
   errorMsg;
 
   constructor(private _JobsSer: jobsService) { }
 
   ngOnInit() {
-    this._JobsSer.createJobs().subscribe (data => this.jobs=data,
+    this._JobsSer.getJobs().subscribe (data => this.jobs=data,
       error => this.errorMsg=error)
     
   }
+
+  editJob(id: string) {
+    this.id = id;
+    this.editForm = true;
+
+  }
+
+  deleteJob(id: string) {
+    this.id = id;
+    console.log(this.id)
+      this._JobsSer.deleteJobs(this.id)
+      .subscribe(data => {
+        console.log(data),
+        error => this.errorMsg = error.statusText;        
+      });
+  }
+
 
 }
