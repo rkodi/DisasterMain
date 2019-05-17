@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'list/create', component: CreateNewJobCodeComponent },
   { path: '', redirectTo: '/list', pathMatch: 'full' },  
   {path:'machines', component: MachinesComponent},
-  {path:'add', component: AddComponent},
+  {path:'machines/add', component: AddComponent},
   {path:'edit/:id', component: EditComponent}
 ]
 

@@ -1,22 +1,77 @@
+<h2>Timesheet Submission</h2>
 <form [formGroup]="timecardForm" (ngSubmit)="onSubmit()">
     <div>
-      <label>Code</label>
-      <input type="text" formControlName="code" class="form-control">
+      <label>Site Code</label>
+      <input type="text" formControlName="sitecode" class="form-control">
     </div>
   
     <div>
-      <label>Contractor</label>
+      <label>Contractor Name</label>
       <input type="text" formControlName="contractor" class="form-control">
     </div>
-  
-    <div>
-      <label>Total Hours</label>
-      <input type="number" formControlName="totalHours" class="form-control">
-    </div>
-  
-    <div>
-      <label>Total Amount</label>
-      <input type="number" formControlName="totalAmount" class="form-control">
-    </div>
+
+    <h2>Labor Entry</h2>
+    <div formArrayName="labors">
+        <div *ngFor="let labor of timecardForm.controls.labors.controls; let i=index" class="panel panel-default">
+          <div class="panel-heading">
+            <span>Labor {{i + 1}}</span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="timecardForm.controls.labors.controls.length > 1" (click)="removeAddress(i)"></span>
+          </div>
+          <div class="panel-body" [formGroupName]="i">
+            <div class="form-group col-xs-6">
+              <label>Labor Code</label>
+              <input type="text" class="form-control" formControlName="laborCode">
+              <!-- <small [hidden]="timecardForm.controls.machines.controls[i].controls.machineCode.valid" class="text-danger">
+                  Street is required
+              </small> -->
+            </div>
+            <div class="form-group col-xs-6">
+              <label>Hours Worked</label>
+              <input type="text" class="form-control" formControlName="hoursWorked">
+            </div>
+            <div class="form-group col-xs-6">
+                <label>Total</label>
+                <input type="text" class="form-control" formControlName="total">
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="margin-20">
+          <a (click)="addLabor()" style="cursor: default">
+            Add Another labor entry +
+          </a>
+        </div>
+    <h2>Machine Entry</h2>
+    <div formArrayName="machines">
+        <div *ngFor="let machine of timecardForm.controls.machines.controls; let i=index" class="panel panel-default">
+          <div class="panel-heading">
+            <span>Machine {{i + 1}}</span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="timecardForm.controls.machines.controls.length > 1" (click)="removeAddress(i)"></span>
+          </div>
+          <div class="panel-body" [formGroupName]="i">
+            <div class="form-group col-xs-6">
+              <label>Machine Code</label>
+              <input type="text" class="form-control" formControlName="machineCode">
+              <!-- <small [hidden]="timecardForm.controls.machines.controls[i].controls.machineCode.valid" class="text-danger">
+                  Street is required
+              </small> -->
+            </div>
+            <div class="form-group col-xs-6">
+              <label>Hours Used</label>
+              <input type="text" class="form-control" formControlName="hoursUsed">
+            </div>
+            <div class="form-group col-xs-6">
+                <label>Total</label>
+                <input type="text" class="form-control" formControlName="total">
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="margin-20">
+          <a (click)="addMachine()" style="cursor: default">
+            Add another machine entry +
+          </a>
+        </div>
     <button type="submit">Submit form</button>
   </form>
