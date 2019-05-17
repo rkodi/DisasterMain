@@ -4,6 +4,8 @@ import {TimecardService} from '../timecard.service';
 import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import { Router} from '@angular/router';
 import { Timecard } from '../Timecard';
+import {MachineService} from '../Services/machine.service'
+import { Machines } from '../Models/machine';
 
 
 @Component({
@@ -15,12 +17,15 @@ export class ContractorTcSubmitComponent implements OnInit {
   public timecardForm: FormGroup;
   public time:number=0
   public total:number=0
-  //public machineForm: FormGroup;
-  //model= new Timecard('code','contractor',3,4,false);
+  public machines: Machines[];
+  public machineHours: Number[] = [];
+  public machineTotals :Number[] = [];
+  public machineRents :Number[] = [];
+
   
   errorMsg="";
 
-  constructor(private fb: FormBuilder, private _TimecardService: TimecardService,private router:Router) { }
+  constructor(private fb: FormBuilder, private _TimecardService: TimecardService,private router:Router, private machineService: MachineService) { }
 
   ngOnInit() {
     this.timecardForm = this.fb.group({
@@ -32,6 +37,10 @@ export class ContractorTcSubmitComponent implements OnInit {
       machines:this.fb.array([this.initMachine()]),
       labors:this.fb.array([this.initLabor()])
     })
+    this.machineService.getMachines()
+      .subscribe(data => this.machines = data,
+        error => this.errorMsg = error);
+    
   }
 
   initMachine() {
@@ -54,13 +63,36 @@ addLabor() {
   const control = <FormArray>this.timecardForm.controls['labors'];
   control.push(this.initLabor());
 }
+removeLabor(i: number) {
+  const control = <FormArray>this.timecardForm.controls['labors'];
+  control.removeAt(i);
+}
 
 addMachine() {
   const control = <FormArray>this.timecardForm.controls['machines'];
   control.push(this.initMachine());
 }
+removeMachine(i: number) {
+  const control = <FormArray>this.timecardForm.controls['machines'];
+  control.removeAt(i);
+}
+setMachineHours(hours,i){
+  this.machineHours[i] = Number(hours);
+  this.calculateMachineTotal(i);
+}
+ setMachineRent(event,i) {
+   this.machineRents[i] = event.rent;
+   this.calculateMachineTotal(i);
+}
+calculateMachineTotal(i){
+  if(this.machineHours[i] !=undefined && this.machineRents[i] != undefined){
+    this.machineTotals[i] = Number(this.machineHours[i]) * Number(this.machineRents[i])
+  }
+
+}
 
   onSubmit(){
+    console.log(this.machines)
     console.log(this.timecardForm.value)
     var sCode=this.timecardForm.value.sitecode
     var contractor =this.timecardForm.value.contractor
@@ -76,7 +108,6 @@ addMachine() {
     }
     for(var i = 0; i<machineControl.length;i++){
       console.log(machineControl.at(i).value.hoursUsed)
-      //this.time =  this.time + Number(machineControl.at(i).value.hoursUsed)
       this.total = this.total + Number(machineControl.at(i).value.total)
     }
     console.log(this.total)

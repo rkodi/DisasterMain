@@ -15,7 +15,7 @@
         <div *ngFor="let labor of timecardForm.controls.labors.controls; let i=index" class="panel panel-default">
           <div class="panel-heading">
             <span>Labor {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="timecardForm.controls.labors.controls.length > 1" (click)="removeAddress(i)"></span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="timecardForm.controls.labors.controls.length > 1" (click)="removeLabor(i)">(Delete)</span>
           </div>
           <div class="panel-body" [formGroupName]="i">
             <div class="form-group col-xs-6">
@@ -27,11 +27,12 @@
             </div>
             <div class="form-group col-xs-6">
               <label>Hours Worked</label>
-              <input type="text" class="form-control" formControlName="hoursWorked">
+              <input type="text" class="form-control" formControlName="hoursWorked" >
             </div>
             <div class="form-group col-xs-6">
                 <label>Total</label>
                 <input type="text" class="form-control" formControlName="total">
+                
               </div>
           </div>
         </div>
@@ -46,23 +47,27 @@
         <div *ngFor="let machine of timecardForm.controls.machines.controls; let i=index" class="panel panel-default">
           <div class="panel-heading">
             <span>Machine {{i + 1}}</span>
-            <span class="glyphicon glyphicon-remove pull-right" *ngIf="timecardForm.controls.machines.controls.length > 1" (click)="removeAddress(i)"></span>
+            <span class="glyphicon glyphicon-remove pull-right" *ngIf="timecardForm.controls.labors.controls.length > 1" (click)="removeMachine(i)">(Delete)</span>
           </div>
           <div class="panel-body" [formGroupName]="i">
-            <div class="form-group col-xs-6">
-              <label>Machine Code</label>
-              <input type="text" class="form-control" formControlName="machineCode">
-              <!-- <small [hidden]="timecardForm.controls.machines.controls[i].controls.machineCode.valid" class="text-danger">
-                  Street is required
-              </small> -->
-            </div>
+
+              <div class="form-group">
+                  <select class="form-control" formControlName="machineCode" (change)="setMachineRent(machines[$event.target.selectedIndex],i)">
+                      <!-- <option [ngValue]="undefined" disabled> Select a city </option> -->
+                      <option *ngFor="let m of machines" [ngValue]="m"> {{m.code}} </option>
+
+                  </select>
+                  </div>
+                  <b>{{machineRent}}</b>
+
             <div class="form-group col-xs-6">
               <label>Hours Used</label>
-              <input type="text" class="form-control" formControlName="hoursUsed">
+              <input type="text" class="form-control" #hoursUsed formControlName="hoursUsed"(keyup)="setMachineHours(hoursUsed.value,i)">
             </div>
             <div class="form-group col-xs-6">
                 <label>Total</label>
-                <input type="text" class="form-control" formControlName="total">
+                <b>{{this.machineTotals[i]}}</b>
+                <input type="text" class="form-control" formControlName="total" placeholder="{{this.machineTotals[i]}}" [attr.disabled]="true">
               </div>
           </div>
         </div>
