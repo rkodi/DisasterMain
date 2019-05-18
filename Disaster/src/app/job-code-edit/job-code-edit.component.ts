@@ -3,14 +3,13 @@ import { jobsService } from '../jobs.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-job-code-management',
-  templateUrl: './job-code-management.component.html',
-  styleUrls: ['./job-code-management.component.css']
+  selector: 'app-job-code-edit',
+  templateUrl: './job-code-edit.component.html',
+  styleUrls: ['./job-code-edit.component.css']
 })
-export class JobCodeManagementComponent implements OnInit {
-  
+export class JobCodeEditComponent implements OnInit {
+
   public jobs=[]; 
   public body: any;
 
@@ -18,9 +17,7 @@ export class JobCodeManagementComponent implements OnInit {
   private editForm1: boolean = false;
   public editForm: FormGroup;
 
-  errorMsg;
-
-  
+  errorMsg; 
 
   constructor(private _JobCode: jobsService, private fb: FormBuilder, private _router: Router, private _route: ActivatedRoute ) { }
 
@@ -33,8 +30,10 @@ export class JobCodeManagementComponent implements OnInit {
       maxHours: []
     });
 
-    this._JobCode.getJobs().subscribe (data => this.jobs=data,
+    this._JobCode.getJobsById(this.id).subscribe (data => this.jobs=data,
       error => this.errorMsg=error)
+     
+
     
   }
 
@@ -43,25 +42,16 @@ export class JobCodeManagementComponent implements OnInit {
     console.log(this.id)
     // this._JobCode.getJobsById(this.id).subscribe(data => {
     //   console.log(data)});
-    
-    this._router.navigate(['list/edit', this.id])
-    
-    
-    // this.editForm1 = true;
-
   }
 
-  deleteJob(id: string) {
-    this.id = id;
-    console.log(this.id)
-      this._JobCode.deleteJobs(this.id)
-      .subscribe(data => {
-        console.log(data),
-        error => this.errorMsg = error.statusText;        
-      });
+  onSubmit() {
+    console.log(this.editForm.value);
+    this._JobCode.postJobs(this.editForm.value)
+      .subscribe(
+        response => console.log( response),
+        error => console.error('Error!', error)
+      );
   }
-
- 
 
 
 }

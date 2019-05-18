@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { jobsService } from '../jobs.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -20,9 +20,10 @@ export class CreateNewJobCodeComponent implements OnInit {
 
   errorMsg;
 
-  constructor(private fb: FormBuilder, private _JobCode: jobsService, private router: Router) { }
+  constructor(private fb: FormBuilder, private _JobCode: jobsService, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
+    
 
     this.JobCode = this.fb.group({
       code: [''], 
@@ -31,24 +32,24 @@ export class CreateNewJobCodeComponent implements OnInit {
       maxHours: ['']
      
     });
+
+  //   this._route.paramMap.subscribe(parameterMap => {
+  //     const id = +parameterMap.get('id');
+  //     this.getJobCode(id);
+  //   });
+  // }
+
+  //   private getJobCode(id: any) {
+  //     if(id === 0) {
+  //       this._router.navigate(['list/edit/0'])
+  //     } else {
+  //       this.body = this._JobCode.getJobsById(id);
+
+  //     }    
     
   }
-  
-  // get newJobCode() {
-  //   return this.JobCode.get('code');
-  // }
 
-  // get Description() {
-  //   return this.JobCode.get('rate');
-  // }
-  // get maxHours() {
-  //   return this.JobCode.get('maxHours');
-  // }
-
-
-
-   
-  onSubmit() {
+   onSubmit() {
     console.log(this.JobCode.value);
     this._JobCode.postJobs(this.JobCode.value)
       .subscribe(

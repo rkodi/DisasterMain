@@ -16,7 +16,8 @@ import {MachinesComponent} from './Components/machines/machines.component';
 import {MachineService} from './Services/machine.service';
 import { EditComponent } from './Components/edit/edit.component';
 import { AddComponent } from './Components/add/add.component' ;
-import {jobsService} from './jobs.service'
+import {jobsService} from './jobs.service';
+import { JobCodeEditComponent } from './job-code-edit/job-code-edit.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {jobsService} from './jobs.service'
     CreateNewJobCodeComponent,
     MachinesComponent,
     AddComponent,
-    EditComponent
+    EditComponent,
+    JobCodeEditComponent
   ],
   imports: [
     BrowserModule,

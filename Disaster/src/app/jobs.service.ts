@@ -18,7 +18,7 @@ export class jobsService {
   }
 
   getJobsById(id: string): Observable<Jobs[]> {
-    return this._http.get<Jobs[]>(this._url + id);
+    return this._http.get<Jobs[]>(this._url + '/' + id);
   }
 
   postJobs(job: Jobs): Observable<Jobs[]> {

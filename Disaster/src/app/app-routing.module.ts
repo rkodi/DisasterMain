@@ -9,6 +9,7 @@ import { CreateNewJobCodeComponent } from './create-new-job-code/create-new-job-
 import { MachinesComponent } from './Components/machines/machines.component';
 import { AddComponent } from './Components/add/add.component';
 import { EditComponent } from './Components/edit/edit.component';
+import { JobCodeEditComponent } from './job-code-edit/job-code-edit.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'contractor/submit', component: ContractorTcSubmitComponent },
   {path: 'admin', component:AdminTCComponent},
   { path: 'list', component: JobCodeManagementComponent },
-  { path: 'list/create', component: CreateNewJobCodeComponent },
+  // { path: 'list/create', component: CreateNewJobCodeComponent },
+  { path: 'list/edit/:id', component: JobCodeEditComponent },
   { path: '', redirectTo: '/list', pathMatch: 'full' },  
   {path:'machines', component: MachinesComponent},
   {path:'add', component: AddComponent},

@@ -5,7 +5,7 @@
     <nav class="navbar navbar-default">
         <ul class="nav navbar-nav">
             <li>
-                <a routerLinkActive="active" style="float: right" routerLink="create">Add New</a>
+                <a routerLinkActive="active" style="float: right" routerLink="edit/0">Add New</a>
             </li>        
         </ul>
     </nav>
@@ -30,7 +30,8 @@
         <td>{{j.description}}</td>
         <td>{{j.rate |currency}}</td>    
         <td>{{j.maxHours}}</td>
-        <td><button type="submit" (click)="editJob(j._id)">Edit</button></td> 
+        <td><button type="submit" (click)="editJob(j._id)">Edit</button></td>
+        <!-- <td><a routerLink="create" routerLinkActive="active" type="submit" (click)="editJob(j._id)"class="btn btn-info">Edit</a></td> -->
         <td><button type="submit" class="btn btn-danger" (click)="deleteJob(j._id)">Delete</button></td>  
      </tr>
 </tbody>
