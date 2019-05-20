@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'contractor/submit', component: ContractorTcSubmitComponent },
   {path: 'admin', component:AdminTCComponent},
   { path: 'list', component: JobCodeManagementComponent },
-  // { path: 'list/create', component: CreateNewJobCodeComponent },
+  { path: 'list/create', component: CreateNewJobCodeComponent },
   { path: 'list/edit/:id', component: JobCodeEditComponent },
   { path: '', redirectTo: '/list', pathMatch: 'full' },  
   {path:'machines', component: MachinesComponent},

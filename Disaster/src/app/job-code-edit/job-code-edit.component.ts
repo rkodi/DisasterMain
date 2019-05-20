@@ -14,7 +14,7 @@ export class JobCodeEditComponent implements OnInit {
   public jobs=[]; 
   public body: any;
 
-  private id: string;
+  id;
   private editForm1: boolean = false;
   public editForm: FormGroup;
 
@@ -30,16 +30,25 @@ export class JobCodeEditComponent implements OnInit {
       description: [],
       rate: [],
       maxHours: []
+    })  
+
+      this._route.paramMap.subscribe(parameterMap => {
+      let id = parameterMap.get('id');
+      console.log(id);
+      // this.getJobCode(id);
+
+      // this._JobCode.getJobsById(id).subscribe (data => this.jobs=data,
+      //   error => this.errorMsg=error)
+      //   console.log(this.jobs);
+
+          this._JobCode.getJobById(id).subscribe(data => {
+      console.log(data)});
+      
     });
-
-    // this._JobCode.getJobsById(this.id).subscribe (data => this.jobs=data,
-    //   error => this.errorMsg=error)
-    //   console.log(this.id)
-     
-
-    
+            
   }
 
+  
   // editJob(id: any) {
   //   this.id = id;
   //   console.log(this.id)
@@ -47,14 +56,17 @@ export class JobCodeEditComponent implements OnInit {
   //     console.log(data)});
   // }
 
-  onSubmit(id: string) {
-    this.id = id;
-    console.log(this.id)
+  onSubmit(id) {
+
+    
+    // this.id = id;
+    // console.log(this.id)
     // console.log(this.editForm.value);
-    this._JobCode.updateJobs(this.id,this.editForm.value)
+    this._JobCode.updateJobs(id,this.editForm.value)
       .subscribe(
         response => console.log( response),
         error => console.error('Error!', error)
+    
       );
   }
 

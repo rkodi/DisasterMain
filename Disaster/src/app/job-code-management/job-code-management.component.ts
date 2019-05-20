@@ -42,7 +42,7 @@ export class JobCodeManagementComponent implements OnInit {
   editJob(id: any) {
     this.id = id;
     // console.log(this.id)
-    this._JobCode.getJobsById(this.id).subscribe(data => {
+    this._JobCode.getJobById(this.id).subscribe(data => {
       console.log(data)});
     
     
@@ -61,6 +61,7 @@ export class JobCodeManagementComponent implements OnInit {
         console.log(data),
         error => this.errorMsg = error.statusText;        
       });
+      this._router.navigate(['list']);
   }
 
  
