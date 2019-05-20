@@ -1,30 +1,101 @@
 
+  
+<div class="wrapper">
+    <div id="formContent">
+      <h2 class="underlineHover" routerLink="/login" routerLinkActive="active"> Login </h2>
+      <h2 class="underlineHover" routerLink="/signup" routerLinkActive="active">Register </h2>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<h1>Hi {{vm.user.firstName}}!</h1>
+<p>You're logged in!!</p>
+<h3>All registered users:</h3>
+<ul>
+    <li ng-repeat="user in vm.allUsers">
+        {{user.username}} ({{user.firstName}} {{user.lastName}})
+        - <a ng-click="vm.deleteUser(user.id)">Delete</a>
+    </li>
+</ul>
+<p>&nbsp;</p>
+<p><a href="#!/login" class="btn btn-primary">Logout</a></p> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
 
 <div class="login">
   <h2 class="login-header">Log in</h2>
-  <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
 
-    <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
-      <input type="email" placeholder="Email" formControlName="email">
+  <form [formGroup]="loginForm" class="login-container" (ngSubmit)="onSubmit()">
+
+    <p [ngClass]="{ 'has-error': Submitted && formControls.f.username.errors }">
+      <input type="username" placeholder="username" formControlName="username">
     </p>
 
-    <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
-      <div *ngIf="formControls.email.errors.required">Email is required</div>
+    <div *ngIf="Submitted && formControls.f.username.errors" class="help-block">
+      <div *ngIf="formControls.f.username.errors.required">username is required</div>
     </div>
 
-    <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+    <p [ngClass]="{ 'has-error': Submitted && formControls.f.password.errors }">
       <input type="password" placeholder="Password" formControlName="password">
     </p>
 
-    <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
-      <div *ngIf="formControls.password.errors.required">Password is required</div>
+    <div *ngIf="Submitted && formControls.f.password.errors" class="help-block">
+      <div *ngIf="formControls.f.password.errors.required">Password is required</div>
     </div>
 
     <p>
       <input type="submit" value="Log in">
     </p>
   </form>
-</div>
+</div> -->
 
 
 

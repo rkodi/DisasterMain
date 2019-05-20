@@ -1,4 +1,9 @@
-export  interface  IUser {
-    username: string;
-    password: string;
+export  class  User {
+    constructor(
+        firstName: string,
+        lastName: string,
+        email: string,
+        password: string,
+        role: string){}
+    
 }
