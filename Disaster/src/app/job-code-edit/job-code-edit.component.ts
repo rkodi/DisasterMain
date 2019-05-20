@@ -10,16 +10,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class JobCodeEditComponent implements OnInit {
 
+ 
   public jobs=[]; 
   public body: any;
 
-  private id: any;
+  private id: string;
   private editForm1: boolean = false;
   public editForm: FormGroup;
 
   errorMsg; 
 
   constructor(private _JobCode: jobsService, private fb: FormBuilder, private _router: Router, private _route: ActivatedRoute ) { }
+
 
   ngOnInit() {
 
@@ -30,23 +32,26 @@ export class JobCodeEditComponent implements OnInit {
       maxHours: []
     });
 
-    this._JobCode.getJobsById(this.id).subscribe (data => this.jobs=data,
-      error => this.errorMsg=error)
+    // this._JobCode.getJobsById(this.id).subscribe (data => this.jobs=data,
+    //   error => this.errorMsg=error)
+    //   console.log(this.id)
      
 
     
   }
 
-  editJob(id: any) {
+  // editJob(id: any) {
+  //   this.id = id;
+  //   console.log(this.id)
+  //   this._JobCode.getJobsById(this.id).subscribe(data => {
+  //     console.log(data)});
+  // }
+
+  onSubmit(id: string) {
     this.id = id;
     console.log(this.id)
-    // this._JobCode.getJobsById(this.id).subscribe(data => {
-    //   console.log(data)});
-  }
-
-  onSubmit() {
-    console.log(this.editForm.value);
-    this._JobCode.postJobs(this.editForm.value)
+    // console.log(this.editForm.value);
+    this._JobCode.updateJobs(this.id,this.editForm.value)
       .subscribe(
         response => console.log( response),
         error => console.error('Error!', error)

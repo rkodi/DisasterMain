@@ -10,11 +10,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./job-code-management.component.css']
 })
 export class JobCodeManagementComponent implements OnInit {
+
   
   public jobs=[]; 
   public body: any;
 
-  private id: any;
+  public id: any;
   private editForm1: boolean = false;
   public editForm: FormGroup;
 
@@ -40,9 +41,10 @@ export class JobCodeManagementComponent implements OnInit {
 
   editJob(id: any) {
     this.id = id;
-    console.log(this.id)
-    // this._JobCode.getJobsById(this.id).subscribe(data => {
-    //   console.log(data)});
+    // console.log(this.id)
+    this._JobCode.getJobsById(this.id).subscribe(data => {
+      console.log(data)});
+    
     
     this._router.navigate(['list/edit', this.id])
     

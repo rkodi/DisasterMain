@@ -25,7 +25,7 @@ export class jobsService {
     return this._http.post<Jobs[]>(this._url, job);
   }
 
-  updatJobs(body: any, id: string): Observable<Jobs[]> {
+  updateJobs(body: any, id: string): Observable<Jobs[]> {
     this._putUrl = this._url + '/' + id
     return this._http.put<Jobs[]>(this._putUrl, body);
   }
