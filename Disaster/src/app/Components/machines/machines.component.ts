@@ -46,6 +46,10 @@ export class MachinesComponent  {
         error => this.errorMsg = error.statusText;
       });
   }
+  edit(id: string){
+    let url: string = '/edit/' + id
+    this.router.navigate([url]);
+  }
 
 
   onSubmit() {

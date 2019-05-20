@@ -8,7 +8,8 @@
                     <th>Machine code</th>
                     <th>Description</th>
                     <th>Hourly Rent/Hr</th>
-                    <th>Max.Hours per day<br />Hr.</th>
+                    <th>Max.Hours per day Hr.</th>
+                    <!-- <th></th> -->
                     <th></th>
                     <th></th>
                 </tr>
@@ -19,8 +20,9 @@
                     <td>{{m.description}}</td>
                     <td>{{m.rent|currency}}</td>
                     <td>{{m.maxHours}}</td>
-                    <td><a routerLink="/edit/id" routerLinkActive="active">Edit</a></td>
-                    <td><button type="submit" (click)="delete(m._id)">Delete</button></td>
+                    <!-- <td><a routerLink="/edit/id" routerLinkActive="active">Edit</a></td> -->
+                    <td><button type="submit" (click)="edit(m._id)">edit</button></td>
+                    <td><button class="btn btn-danger" type="submit" (click)="delete(m._id)">Delete</button></td>
                 </tr>
             </tbody>
         </table>
