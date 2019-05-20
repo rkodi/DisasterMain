@@ -1,39 +1,35 @@
-
-<br/>
-<h4 style="text-align:left">Machine Management</h4>
-
-<a routerLink="add" routerLinkActive="active" style="float:initial" >Add New</a>
-
-<div class="container">
-<table class="table table-boarder">
-  <thead>
-    <tr>
-      <th>Machine code</th>
-      <th>Description</th>
-      <th>Hourly Rent/Hr</th>
-      <th>Max.Hours per day<br/>Hr</th>
-      <th></th>
-      <th></th>
-    </tr>
-</thead>
-<tbody>
-    <tr *ngFor ="let m of machines">
-        <td>{{m.code}}</td>
-        <td>{{m.description}}</td>
-        <td>{{m.rent|currency}}</td>    
-        <td>{{m.maxHours}}</td>
-       <td><button type="submit" (click)="edit(m._id)">Edit</button></td> 
-       <td><button type="submit" (click)="delete(m._id)">Delete</button></td> 
-
-        <!-- <td><a routerLink="edit/id"  routerLinkActive="active">Edit</a></td> 
-        <td><a routerLink="delete" routerLinkActive="active">Delete</a></td>   -->
-     </tr>
-</tbody>
-</table>
+<div class="container"><br/>
+    <h4 style="text-align:left">Machine Management</h4>
+    <a routerLink="add" routerLinkActive="active" style="float:right">Add New</a>
+    <div class="container">
+        <table class="table table-boarder">
+            <thead>
+                <tr>
+                    <th>Machine code</th>
+                    <th>Description</th>
+                    <th>Hourly Rent/Hr</th>
+                    <th>Max.Hours per day<br />Hr.</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let m of machines">
+                    <td>{{m.code}}</td>
+                    <td>{{m.description}}</td>
+                    <td>{{m.rent|currency}}</td>
+                    <td>{{m.maxHours}}</td>
+                    <td><a routerLink="/edit/id" routerLinkActive="active">Edit</a></td>
+                    <td><button type="submit" (click)="delete(m._id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a [routerLink]="['/home']" id="machines"><span class="glyphicon glyphicon-machines" aria-hidden="true"></span>Back to Home</a>
 </div>
 
-<div class="col-md-3">
-    <h2>Edit Machine</h2>
+<!-- <div class="col-md-3">
+        <h4>Edit Machine</h4>
     <form [formGroup]="editForm" *ngIf="editForm1" (ngSubmit)="onSubmit()">
 
         <div class="form-group">
@@ -59,4 +55,4 @@
         <button type="submit" class="btn btn-info">Add</button>
         <a href="" type="submit" class="btn btn-info">Back to home</a>
     </form>
-</div>
+</div> -->

@@ -1,0 +1,64 @@
+<div class="bs-example">
+    <nav class="navbar navbar-expand-md navbar navbar-light" style="background-color: #ddeeff;">
+            <a href="#" class="navbar-brand">
+                    <img src="https://image.shutterstock.com/image-photo/disaster-recovery-data-loss-prevention-450w-1276258972.jpg" height="70" width="70" alt="DR">
+                </a>
+        <!-- <h2 class="underlineHover" routerLink="home" routerLinkActive="active"> Home </h2> -->
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav" >
+                <div Admin="true" *ngIf="Admin; then Admin; else Contractor"></div>
+
+               <ng-template #Admin>
+                     <ol class="breadcrumb">
+                     <li class="breadcrumb-item"><a [routerLink]="['/home']" id="home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+                     <li class="breadcrumb-item"><a [routerLink]="['/list']" id="list"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>Job Management</a></li>
+                     <li class="breadcrumb-item"><a [routerLink]="['/machines']" id="machines"><span class="glyphicon glyphicon-machines" aria-hidden="true"></span>Machines Management</a></li>
+                     <li class="breadcrumb-item"><a [routerLink]="['/admin']" id="admin"><span class="glyphicon glyphicon-admin" aria-hidden="true"></span>Timecard Management</a></li>
+                     </ol>
+                    </ng-template>
+
+          <ng-template #Contractor>
+            <li class="breadcrumb-item"><a [routerLink]="['/home']" id="home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="['/admin']" id="admin"><span class="glyphicon glyphicon-admin" aria-hidden="true"></span>Timecard Management</a></li>
+          </ng-template>
+        </div>
+               
+            <div class="breadcrumb-menu">
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+                <a [routerLink]="['/login']" id="login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><i class="cui-logout"></i>logout</a>
+            </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<!-- <a [routerLink]="['/user']" id="user"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>User Details</a> -->
+
+
+
+
+
+
+<!-- <div>
+    <table *ngIf="logout">
+        <tr>
+            <td>
+                <a href="#" (click)="logoutClicked($event)" id="logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a><br
+            /></td>
+        </tr>
+    </table>
+
+    <table *ngIf="!logout">
+        <tr>
+            <td>
+                <a [routerLink]="['/login']" id="login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>logout</a><br
+            /></td>
+        </tr>
+    </table>
+</div> -->

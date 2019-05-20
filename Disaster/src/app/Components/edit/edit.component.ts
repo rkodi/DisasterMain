@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit} from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { MachineService } from 'src/app/Services/machine.service';
 import { Machines } from 'src/app/Models/machine';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -9,41 +9,70 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent implements OnInit {
-
-machines:Machines[];
-editForm:FormGroup;
-submitted = false;
-
-  constructor(private router:Router,private _machineservice:MachineService,private formbuilder:FormBuilder) { }
+export class EditComponent implements  OnInit {
+  public body:string
+  machines: Machines;
+  public updatedmachines: Machines
+  updated=false;
+  submitted = false;
+  errorMsg;
+  public editForm1: boolean = false;
+  public editForm: FormGroup;
+  // public body: any;
+  private id: any;
+  
+  constructor(private route: ActivatedRoute, private router: Router, private _machineservice: MachineService, private formbuilder: FormBuilder) {
+    // this.route.paramMap.subscribe((params:ParamMap)=>{let id =params.get('body');
+    // this.body=id; 
+    // })
+    // this._machineservice.getMachinesbyId(this.body)
+    // .subscribe(data=>{
+    //   let machines= data;
+    //   this.machines=machines;
+    // })
+   }
 
   ngOnInit() {
-    let machineId = localStorage.getItem('machineId');
-    if(!machineId){
-      alert('something worng!');
-      this.router.navigate(['']);
-    }
-    
+    // let id = localStorage.getItem('id')
     this.editForm = this.formbuilder.group({
-    code: [],
-    description: [],
-    rent: [],
-    maxHours: []
-  });
+      code: [],
+      description: [],
+      rent: [],
+      maxHours: []
+    });
+this.route.paramMap.subscribe((params:ParamMap)=>{let id =params.get('id');
+    console.log(id)  })
+    this._machineservice.getMachinesbyId(this.body)
+    .subscribe(data=>{
+      let machines= data;
+      this.machines=machines;
+  
+    })
 
-  this._machineservice.getMachinesbyId(machineId).subscribe(data=>{
-    console.log(data);
-    this.editForm.patchValue(data); 
-  });
+    // this._machineservice.getMachinesbyId(this.id)
+    //   .subscribe(data => {
+    //     console.log(data),
+    //     this.editForm.patchValue(data);
+    //     error => this.errorMsg = error.statusText;
+    //   })
   }
-  onSubmit(){
+
+  edit(editForm) {
+    this.submitted = true;
+    // let machines=this.machines
     console.log(this.editForm);
-    this._machineservice.updatemachine(this.editForm.value)
-      .subscribe(data => {
-        console.log(data)
-        
-        // this.router.navigate(['/machines']);
-      });     
-   
+    this.updated=true;
+    this._machineservice.editMachine(this.editForm.value,this.id)
+    .subscribe(data=>{
+      console.log(data),
+      error => this.errorMsg = error.statusText;
+      this.router.navigate(['/machines']);
+
+    });
+     
     }
-}
+
+  
+  }
+ 
+ 

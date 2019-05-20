@@ -1,6 +1,6 @@
 <div class="col-md-3">
     <h2>Edit Machine</h2>
-    <form [formGroup]="editForm" *ngIf="editForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="editForm" (ngSubmit)="edit(editForm)">
 
         <div class="form-group">
             <label>code:</label>
@@ -22,7 +22,7 @@
             <input type="text" formControlName="maxHours" placeholder="maxHours" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-info">Add</button>
-        <a href="" type="submit" class="btn btn-info">Back to home</a>
+        <button type="submit" (click)="edit" class="btn btn-info">Edit</button>
+        <a [routerLink]="['/machines']" class="btn btn-info" id="machines"><span class="glyphicon glyphicon-machines" aria-hidden="true"></span>Back to machines</a>
     </form>
 </div>

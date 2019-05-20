@@ -1,0 +1,28 @@
+
+<div class="container"> 
+<h2>User</h2><br/>
+<a routerLink="userdetails" routerLinkActive="active" style="float:initial" >Add new</a>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td>{{u.firstName}}</td>
+      <td>{{u.lastName}}</td>
+      <td>{{u.email}}</td>
+      <td>{{u.role}}</td>
+      <td><button type="submit" (click)="edit">Edit</button></td> 
+       <td><button type="submit" (click)="delete(u._id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>

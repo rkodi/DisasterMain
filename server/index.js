@@ -13,12 +13,14 @@ app.get('/', function(req, res) {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
     res.setHeader('Access-Control-Allow-Credentials', true); // If needed
-    app.use("/",users)
+   
     res.send('cors problem fixed:)');
 });
 app.use("/", jobs)
 app.use("/",machines)
 app.use("/",timecards)
+app.use("/",users)
+
 
 const db = 'mongodb://localhost:27017/disaster';
 mongoose.connect(db, { useNewUrlParser: true },err =>{

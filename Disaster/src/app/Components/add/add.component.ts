@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MachineService } from 'src/app/Services/machine.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add',
@@ -25,13 +25,14 @@ export class AddComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.submitted = true;
+    this.submitted = true;
     console.log(this.addForm);
     this._machineservice.addmachine(this.addForm.value)
       .subscribe(data => {
         console.log(data),
           error => this.errorMsg = error.statusText;
-        // this.router.navigate(['/machines']);
+        this.router.navigate(['/machines']);
+        // location.reload();
       });
   }
 }
