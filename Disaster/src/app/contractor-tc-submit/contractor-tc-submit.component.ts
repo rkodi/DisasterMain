@@ -17,12 +17,8 @@ export class ContractorTcSubmitComponent implements OnInit {
   public time: number = 0
   public total: number = 0
   public machines: Machines[];
-  public machineHours: Number[] = [];
-  public machineTotals: Number[] = [];
   public machineRents: Number[] = [];
   public jobs: Jobs[];
-  public jobHours: Number[] = [];
-  public jobTotals: Number[] = [];
   public jobRents: Number[] = [];
   errorMsg = "";
   constructor(private fb: FormBuilder, private _TimecardService: TimecardService, private router: Router, private machineService: MachineService, private jobService: jobsService) { }
@@ -32,7 +28,6 @@ export class ContractorTcSubmitComponent implements OnInit {
       contractor: [""],
       totalHours: [""],
       totalAmount: [],
-      approved: [false],
       machines: this.fb.array([this.initMachine()]),
       jobs: this.fb.array([this.initJob()])
     })
@@ -44,13 +39,15 @@ export class ContractorTcSubmitComponent implements OnInit {
   initMachine() {
     return this.fb.group({
       machineCode: [""],
-      hoursUsed: []
+      hoursUsed: [],
+      total:[]
     });
   }
   initJob() {
     return this.fb.group({
       jobCode: [],
-      hoursWorked: []
+      hoursWorked: [],
+      total:[]
     });
   }
   addJob() {
@@ -69,44 +66,35 @@ export class ContractorTcSubmitComponent implements OnInit {
     const control = <FormArray>this.timecardForm.controls['machines'];
     control.removeAt(i);
   }
-  setMachineHours(hours, i) {
-    this.machineHours[i] = Number(hours);
-    this.calculateMachineTotal(i);
-  }
   setMachineRent(event, i) {
     this.machineRents[i] = event.rent;
     this.calculateMachineTotal(i);
   }
   calculateMachineTotal(i) {
-    if (this.machineHours[i] != undefined && this.machineRents[i] != undefined) {
-      this.machineTotals[i] = Number(this.machineHours[i]) * Number(this.machineRents[i])
+    if (this.timecardForm.get('machines').value[i].hoursUsed != undefined && this.machineRents[i] != undefined) {
+      this.timecardForm.get('machines').value[i].total = this.timecardForm.get('machines').value[i].hoursUsed * Number(this.machineRents[i])
     }
-  }
-  setJobHours(hours, i) {
-    this.jobHours[i] = Number(hours);
-    this.calculateJobTotal(i);
   }
   setJobRent(event, i) {
     this.jobRents[i] = event.rate;
     this.calculateJobTotal(i);
   }
   calculateJobTotal(i) {
-    if (this.jobHours[i] != undefined && this.jobRents[i] != undefined) {
-      this.jobTotals[i] = Number(this.jobHours[i]) * Number(this.jobRents[i])
+    if (this.timecardForm.get('jobs').value[i].hoursWorked != undefined && this.jobRents[i] != undefined) {
+      this.timecardForm.get('jobs').value[i].total = this.timecardForm.get('jobs').value[i].hoursWorked * Number(this.jobRents[i])
     }
   }
   onSubmit() {
     var sCode = this.timecardForm.value.sitecode
     var contractor = this.timecardForm.value.contractor
-    var jobControl = this.timecardForm.get('jobs') as FormArray;
-    for (var i = 0; i < jobControl.length; i++) {
-      this.time = this.time + Number(jobControl.at(i).value.hoursWorked)
-      this.total = this.total + Number(this.jobTotals[i])
+    for (var i = 0; i < this.timecardForm.get('jobs').value.length; i++) {
+      this.time = Number(this.time) + Number(this.timecardForm.get('jobs').value[i].hoursWorked)
+      this.total += this.timecardForm.get('jobs').value[i].total
     }
-    for (var i = 0; i < this.machineTotals.length; i++) {
-      this.total = Number(this.total) + Number(this.machineTotals[i])
+    for (var i = 0; i < this.timecardForm.get('machines').value.length; i++) {
+      this.total = Number(this.total) + this.timecardForm.get('machines').value[i].total
     }
-    var timecard = new Timecard(sCode, contractor, this.time, this.total, this.timecardForm.value.approved)
+    var timecard = new Timecard(sCode, contractor, this.time, this.total, false)
     this._TimecardService.createTimecard(timecard).subscribe()
     setTimeout(() => this.router.navigate(['contractor']), 8);
   }

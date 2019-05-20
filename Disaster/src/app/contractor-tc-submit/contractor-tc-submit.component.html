@@ -31,11 +31,11 @@
         <div class="form-group col-xs-6">
           <label>Hours Worked</label>
           <input type="text" class="form-control" #hoursWorked formControlName="hoursWorked"
-            (keyup)="setJobHours(hoursWorked.value,i)">
+            (keyup)="calculateJobTotal(i)">
         </div>
         <div class="form-group col-xs-6">
           <label>Total</label>
-          <input type="text" class="form-control" placeholder="{{this.jobTotals[i]}}" [attr.disabled]="true">
+          <input type="text" class="form-control" formControlName="total" placeholder="{{this.timecardForm.get('jobs').value[i].total}}" [attr.disabled]="true">
         </div>
       </div>
     </div>
@@ -65,12 +65,12 @@
         </div>
         <div class="form-group col-xs-6">
           <label>Hours Used</label>
-          <input type="text" class="form-control" #hoursUsed formControlName="hoursUsed"
-            (keyup)="setMachineHours(hoursUsed.value,i)">
+          <input type="text" class="form-control" formControlName="total" #hoursUsed formControlName="hoursUsed"
+            (keyup)="calculateMachineTotal(i)">
         </div>
         <div class="form-group col-xs-6">
           <label>Total</label>
-          <input type="text" class="form-control" placeholder="{{this.machineTotals[i]}}" [attr.disabled]="true">
+          <input type="text" class="form-control" placeholder="{{this.timecardForm.get('machines').value[i].total}}" [attr.disabled]="true">
         </div>
       </div>
     </div>
