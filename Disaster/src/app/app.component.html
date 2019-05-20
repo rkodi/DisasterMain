@@ -1,20 +1,15 @@
-<h2>app component</h2>
-<!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h2>
-    Disaster Recovery Application: Timecard Submission
-  </h2>
+<nav class="sidenav">
+  <div class="container">
+    <ul class="nav navbar-nav" routerLinkActive="active">
+      <li class="nav-item"><a class="nav-link" routerLink="list">Job Code Management</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="machines">Machine Management</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="admin">Timecard Approval</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="contractor">contractor</a></li>
+    </ul>
+  </div>
+</nav>
 
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-        <div class="container">
-            <a class="navbar-brand">Angular Router</a>
-            <ul class="nav navbar-nav" routerLinkActive="active">
-                <li class="nav-item"><a class="nav-link" routerLink="admin">admin</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="contractor">contractor</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="contractor/submit">submit</a></li>
-            </ul>
-        </div>
-    </nav>
-<router-outlet></router-outlet>
-<!-- <app-machines></app-machines> -->
+<div style="width:80%;float:right;">
+    <router-outlet></router-outlet>
+</div>
 

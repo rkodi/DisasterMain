@@ -1,6 +1,4 @@
 <h2>Timesheet Approval</h2>
-<h3>{{errorMsg}}</h3>
-
 <table class="table table-border">
   <thead>
     <th>Site Code</th>
@@ -16,13 +14,13 @@
       <td>{{cards.contractor}}</td>
       <td>{{cards.totalHours}}</td>
       <td>{{cards.totalAmount}}</td>
-      <td *ngIf= "cards.approved; else nameElseBlock">Approved</td>
-        
-          <ng-template #nameElseBlock>
+      <td *ngIf="cards.approved; else approveElseBlock">Approved</td>
+      <td><ng-template #approveElseBlock>
+        <td>
         <button type="submit" (click)="approve(cards._id)">Approve</button>
         <button type="submit" (click)="deny(cards._id)">Deny</button>
-      </ng-template>
-
+        </td>
+      </ng-template></td>
     </tr>
   </tbody>
 </table>
