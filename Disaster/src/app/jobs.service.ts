@@ -17,15 +17,15 @@ export class jobsService {
     return this._http.get<Jobs[]>(this._url);
   }
 
-  getJobById(id: string): Observable<Jobs[]> {
-    return this._http.get<Jobs[]>(this._url + '/' + id);
+  getJobById(id: string) {
+    return this._http.get<Jobs>(this._url + '/' + id);
   }
 
   postJobs(job:Jobs): Observable<Jobs[]> {
     return this._http.post<Jobs[]>(this._url, job);
   }
 
-  updateJobs(body:Jobs, id: string) {
+  updateJobs(body:Jobs, id:string) {
     this._putUrl = this._url + '/' + id
     return this._http.put<Jobs>(this._putUrl, body);
   }
