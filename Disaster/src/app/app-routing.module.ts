@@ -32,7 +32,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   {
     path: '', redirectTo: '/login', pathMatch: 'full'},
-  { path: '', redirectTo: '/admin', pathMatch: 'full' },
   { path: 'contractor', component: ContractorTCComponent},
   { path: 'contractor/submit', component: ContractorTcSubmitComponent },
   { path: 'admin', component: AdminTCComponent },
