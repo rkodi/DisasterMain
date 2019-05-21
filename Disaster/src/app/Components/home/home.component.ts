@@ -3,6 +3,7 @@ import { User } from 'src/app/Models/User';
 import {  Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
 import { LoginService } from 'src/app/Services/login.service';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-home',
@@ -23,12 +24,13 @@ export class HomeComponent implements OnInit  {
 // this.roles.push("Contractor");
 
    }
-  
+   
    ngOnInit() {
      console.log(this.user.role);
     if(this.user.role == "Admin"){
       this.Admin=true;
     }
+  
     
   }
   
