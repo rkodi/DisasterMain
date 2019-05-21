@@ -14,10 +14,6 @@ export class CreateNewJobCodeComponent implements OnInit {
 
   public JobCode: FormGroup;
   public body: any;
-
-  private id: string;
-  private editForm: boolean = false;
-
   errorMsg;
 
   constructor(private fb: FormBuilder, private _JobCode: jobsService, private _router: Router, private _route: ActivatedRoute) { }
@@ -33,20 +29,6 @@ export class CreateNewJobCodeComponent implements OnInit {
      
     });
 
-  //   this._route.paramMap.subscribe(parameterMap => {
-  //     const id = +parameterMap.get('id');
-  //     this.getJobCode(id);
-  //   });
-  // }
-
-  //   private getJobCode(id: any) {
-  //     if(id === 0) {
-  //       this._router.navigate(['list/edit/0'])
-  //     } else {
-  //       this.body = this._JobCode.getJobsById(id);
-
-  //     }    
-    
   }
 
    onSubmit() {

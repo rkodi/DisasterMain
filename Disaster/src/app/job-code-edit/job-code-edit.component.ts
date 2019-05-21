@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { jobsService } from '../jobs.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { Jobs } from '../job';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-job-code-edit',
@@ -11,7 +12,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 export class JobCodeEditComponent implements OnInit {
 
  
-  public jobs=[]; 
+  public Jobs: Jobs; 
   public body: any;
 
   id;
@@ -30,7 +31,7 @@ export class JobCodeEditComponent implements OnInit {
       description: [],
       rate: [],
       maxHours: []
-    })  
+    }); 
 
       // this._route.paramMap.subscribe(parameterMap => {
       // this.id = parameterMap.get('id');
@@ -48,8 +49,8 @@ export class JobCodeEditComponent implements OnInit {
     console.log(this.id)  })
     this._JobCode.getJobById(this.id)
     .subscribe(data=>{
-      let jobs= data;
-      this.jobs=jobs;
+      let Job= data;
+      this.Jobs=Job;
   
     })
       
