@@ -12,7 +12,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class JobCodeEditComponent implements OnInit {
 
  
-  public Jobs: Jobs; 
+  public Job: Jobs; 
   public body: any;
 
   id;
@@ -49,8 +49,8 @@ export class JobCodeEditComponent implements OnInit {
     console.log(this.id)  })
     this._JobCode.getJobById(this.id)
     .subscribe(data=>{
-      let Job= data;
-      this.Jobs=Job;
+      let jobs= data;
+      // this.Job=jobs;
   
     })
       
