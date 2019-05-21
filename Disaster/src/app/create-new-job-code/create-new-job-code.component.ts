@@ -56,6 +56,7 @@ export class CreateNewJobCodeComponent implements OnInit {
         response => console.log( response),
         error => console.error('Error!', error)
       );
+      this._router.navigate(['list'])
       
   }
 
