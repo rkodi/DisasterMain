@@ -3,13 +3,13 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group row col-sm-0">
-      <label class="col-sm-2 col-form-label" for="firstName">First Name</label>
+      <label class="col-sm-2 col-form-label" for="firstName">FirstName</label>
       <input type="text" formControlName="firstName" required class="form-control form-control-sm"
         [ngClass]="{ 'is-invalid': submitted && firstName.errors }">
     </div>
 
     <div class="form-group row col-sm-0">
-      <label class="col-sm-2 col-form-label">Last Name</label>
+      <label class="col-sm-2 col-form-label">LastName</label>
       <input type="text" formControlName="lastname" required class="form-control form-control-sm"
         [ngClass]="{ 'is-invalid': submitted && lastname.errors }">
     </div>
