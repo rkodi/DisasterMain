@@ -61,12 +61,13 @@ export class JobCodeEditComponent implements OnInit {
       // this.id = id;
       // console.log(this.id)
       // console.log(this.editForm.value);
-      this._JobCode.updateJobs(this.id,this.editForm.value)
+      this._JobCode.updateJobs(this.editForm.value,this.id)
         .subscribe(
           response => console.log( response),
           error => console.error('Error!', error)
       
         );
+        this._router.navigate(['/list']);
     }
             
   }
