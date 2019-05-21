@@ -13,7 +13,7 @@
         <input type="email" #email="ngModel" id="email" required class="form-control form-control-sm"
           class="form-control input-sm" [class.is-invalid]="email.invalid && email.touched" name="email"
           [(ngModel)]="loginModel.email"></div>
-      <small class="form-text text-muted" class="text-danger" [class.d-none]="email.valid || email.untouched">Email is
+      <small  class="text-danger" [class.d-none]="email.valid || email.untouched">Email is
         required</small>
     </div><br />
 

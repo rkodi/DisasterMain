@@ -23,7 +23,7 @@
                                     class="glyphicon glyphicon-machines" aria-hidden="true"></span>Machines
                                 Management</a></li>
                         <li class="breadcrumb-item"><a [routerLink]="['/admin']" id="admin"><span
-                                    class="glyphicon glyphicon-admin" aria-hidden="true"></span>Timecard Management</a>
+                                    class="glyphicon glyphicon-admin" aria-hidden="true"></span>Timecard Approval</a>
                         </li>
                     </ol>
                 </ng-template>
@@ -31,7 +31,7 @@
                 <ng-template #Contractor>
                     <li class="breadcrumb-item"><a [routerLink]="['/home']" id="home"><span
                                 class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-                    <li class="breadcrumb-item"><a [routerLink]="['/admin']" id="admin"><span
+                    <li class="breadcrumb-item"><a [routerLink]="['/contractor']" id="contractor"><span
                                 class="glyphicon glyphicon-admin" aria-hidden="true"></span>Timecard Management</a></li>
                 </ng-template>
             </div>
@@ -48,27 +48,8 @@
 </div>
 
 
-<a [routerLink]="['/user']" id="user"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>User Details</a>
+<!-- <a [routerLink]="['/user']" id="user"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>User Details</a> -->
 
 
 
 
-
-
-<!-- <div>
-    <table *ngIf="logout">
-        <tr>
-            <td>
-                <a href="#" (click)="logoutClicked($event)" id="logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a><br
-            /></td>
-        </tr>
-    </table>
-
-    <table *ngIf="!logout">
-        <tr>
-            <td>
-                <a [routerLink]="['/login']" id="login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>logout</a><br
-            /></td>
-        </tr>
-    </table>
-</div> -->

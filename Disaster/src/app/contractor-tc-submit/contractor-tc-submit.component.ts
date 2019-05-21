@@ -39,7 +39,7 @@ export class ContractorTcSubmitComponent implements OnInit {
     this.machineService.getMachines()
       .subscribe(data => this.machines = data,
         error => this.errorMsg = error);
-    this.jobService.createjobs().subscribe(data => this.jobs = data, error => this.errorMsg = error)
+    this.jobService.getJobs().subscribe(data => this.jobs = data, error => this.errorMsg = error)
   }
   initMachine() {
     return this.fb.group({

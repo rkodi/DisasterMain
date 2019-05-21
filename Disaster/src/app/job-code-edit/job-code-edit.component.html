@@ -1,3 +1,6 @@
+<br/>
+<div class="container"><br/>
+
 <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label>Job Code</label>
@@ -20,5 +23,6 @@
   </div>
 
 <button type="submit" style="float: center;">Update</button>
+<a [routerLink]="['/home']" id="machines"><span class="glyphicon glyphicon-machines" aria-hidden="true"></span>Back to Home</a>
 <!-- <button type="submit" (click)="updateCode" style="float: center;">Update1</button> -->
 </form>  
