@@ -61,7 +61,7 @@ export class JobCodeManagementComponent implements OnInit {
         console.log(data),
         error => this.errorMsg = error.statusText;        
       });
-      this._router.navigate(['list']);
+      location.reload();
   }
 
  
