@@ -30,6 +30,7 @@ export class SigninComponent implements OnInit {
     this.submitted = true;
     this._loginService.login(this.loginModel)
     .subscribe(Response=>{
+      localStorage.setItem("user", JSON.stringify(Response.user) ),
     this.router.navigate(['/home'])
     error => this.errorMsg = error.statusText
 

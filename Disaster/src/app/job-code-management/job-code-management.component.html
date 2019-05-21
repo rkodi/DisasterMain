@@ -1,32 +1,32 @@
+<br />
+<div class="container"><br />
 
-<h4 style="text-align:left">Job Code Management</h4>
-
-
-
-
-<div>
+  <h4 style="text-align:left">Job Code Management</h4>
+  <div>
     <a routerLinkActive="active" style="text-align:left" routerLink="create">Add New</a>
-<table class="table table-border">
-  <thead>
-    <tr>
-      <th>Job Code</th>
-      <th>Description</th>
-      <th>Hourly Rate</th>
-      <th>Max.Hours P/D</th>
-      <th></th>
-      <th></th>
-    </tr>
-</thead>
-<tbody>
-    <tr *ngFor ="let j of jobs">
-        <td>{{j.code}}</td>
-        <td>{{j.description}}</td>
-        <td>{{j.rate |currency}}</td>    
-        <td>{{j.maxHours}}</td>
-        <td><button type="submit" (click)="editJob(j._id)">Edit</button></td>
-        <!-- <td><a routerLink="create" routerLinkActive="active" type="submit" (click)="editJob(j._id)"class="btn btn-info">Edit</a></td> -->
-        <td><button type="submit" class="btn btn-danger" (click)="deleteJob(j._id)">Delete</button></td>  
-     </tr>
-</tbody>
-</table>
-</div> 
+    <table class="table table-border">
+      <thead>
+        <tr>
+          <th>Job Code</th>
+          <th>Description</th>
+          <th>Hourly Rate</th>
+          <th>Max.Hours P/D</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let j of jobs">
+          <td>{{j.code}}</td>
+          <td>{{j.description}}</td>
+          <td>{{j.rate |currency}}</td>
+          <td>{{j.maxHours}}</td>
+          <td><button type="submit" (click)="editJob(j._id)">Edit</button></td>
+          <!-- <td><a routerLink="create" routerLinkActive="active" type="submit" (click)="editJob(j._id)"class="btn btn-info">Edit</a></td> -->
+          <td><button type="submit" class="btn btn-danger" (click)="deleteJob(j._id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <a [routerLink]="['/home']" id="machines"><span class="glyphicon glyphicon-machines" aria-hidden="true"></span>Back to Home</a>
+  </div>
