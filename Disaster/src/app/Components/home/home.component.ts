@@ -13,8 +13,10 @@ export class HomeComponent implements OnInit  {
   
   // roles = Array<String>();
   public roles=['Admin','Contractor']
-  Admin:boolean=true;
+  public Admin:boolean;
   Contractor:boolean=false;
+  //localStorage.clear();
+  public user = JSON.parse(localStorage.getItem("user"));
 
   constructor(private _loginservice:LoginService,private router:Router,private route:ActivatedRoute ) { 
 // this.roles.push("Admin");
@@ -23,18 +25,10 @@ export class HomeComponent implements OnInit  {
    }
   
    ngOnInit() {
-    // this.Admin=true;
-    // this._loginservice.login(this.Admin)
-       //  this.Admin=true;
-    // this._loginservice.login(this.roles)
-    // .subscribe(Response=>{
-    //   if(Response.roles=='Admin'){
-    //     this.router.navigate(['/home'])
-    //   }else{
-    //     this.router.navigate(['/admin']);
-    
-    //   }
-    // })
+     console.log(this.user.role);
+    if(this.user.role == "Admin"){
+      this.Admin=true;
+    }
     
   }
   

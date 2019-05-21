@@ -11,9 +11,9 @@
 
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav">
-                <div Admin="true" *ngIf="Admin; then Admin; else Contractor"></div>
+                <div *ngIf="Admin===true; then admin; else contractor;"></div>
 
-                <ng-template #Admin>
+                <ng-template #admin>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a [routerLink]="['/home']" id="home"><span
                                     class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
@@ -28,7 +28,7 @@
                     </ol>
                 </ng-template>
 
-                <ng-template #Contractor>
+                <ng-template #contractor>
                     <li class="breadcrumb-item"><a [routerLink]="['/home']" id="home"><span
                                 class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
                     <li class="breadcrumb-item"><a [routerLink]="['/contractor']" id="contractor"><span
