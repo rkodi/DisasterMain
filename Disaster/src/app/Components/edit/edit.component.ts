@@ -40,9 +40,9 @@ export class EditComponent implements  OnInit {
       rent: [],
       maxHours: []
     });
-this.route.paramMap.subscribe((params:ParamMap)=>{let id =params.get('id');
-    console.log(id)  })
-    this._machineservice.getMachinesbyId(this.body)
+this.route.paramMap.subscribe((params:ParamMap)=>{this.id =params.get('id');
+    console.log(this.id)  })
+    this._machineservice.getMachinesbyId(this.id)
     .subscribe(data=>{
       let machines= data;
       this.machines=machines;

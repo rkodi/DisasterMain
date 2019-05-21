@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { jobsService } from '../jobs.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-job-code-edit',
@@ -32,19 +32,41 @@ export class JobCodeEditComponent implements OnInit {
       maxHours: []
     })  
 
-      this._route.paramMap.subscribe(parameterMap => {
-      let id = parameterMap.get('id');
-      console.log(id);
+      // this._route.paramMap.subscribe(parameterMap => {
+      // this.id = parameterMap.get('id');
+      // console.log(this.id);
       // this.getJobCode(id);
 
       // this._JobCode.getJobsById(id).subscribe (data => this.jobs=data,
       //   error => this.errorMsg=error)
       //   console.log(this.jobs);
 
-          this._JobCode.getJobById(id).subscribe(data => {
-      console.log(data)});
+      //     this._JobCode.getJobById(this.id).subscribe(data => {
+      // console.log(data)});
+
+      this._route.paramMap.subscribe((params:ParamMap)=>{this.id =params.get('id');
+    console.log(this.id)  })
+    this._JobCode.getJobById(this.id)
+    .subscribe(data=>{
+      let jobs= data;
+      this.jobs=jobs;
+  
+    })
       
-    });
+    }
+    onSubmit() {
+
+    
+      // this.id = id;
+      // console.log(this.id)
+      // console.log(this.editForm.value);
+      this._JobCode.updateJobs(this.id,this.editForm.value)
+        .subscribe(
+          response => console.log( response),
+          error => console.error('Error!', error)
+      
+        );
+    }
             
   }
 
@@ -56,19 +78,6 @@ export class JobCodeEditComponent implements OnInit {
   //     console.log(data)});
   // }
 
-  onSubmit(id) {
-
-    
-    // this.id = id;
-    // console.log(this.id)
-    // console.log(this.editForm.value);
-    this._JobCode.updateJobs(id,this.editForm.value)
-      .subscribe(
-        response => console.log( response),
-        error => console.error('Error!', error)
-    
-      );
-  }
+  
 
 
-}
