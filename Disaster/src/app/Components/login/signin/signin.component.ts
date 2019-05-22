@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { signin } from 'src/app/Models/signin';
 import { User } from 'src/app/Models/User';
 import { FormBuilder } from '@angular/forms';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-signin',
@@ -28,13 +29,24 @@ export class SigninComponent implements OnInit {
   onSubmit(userForm):void{
     console.log(this.loginModel);
     this.submitted = true;
+    var token:string
     this._loginService.login(this.loginModel)
-    .subscribe(Response=>{
+    .subscribe(Response=>{token=Response.token,
       localStorage.setItem("user", JSON.stringify(Response.user) ),
-    this.router.navigate(['/home'])
+      
+    
     error => this.errorMsg = error.statusText
 
       });
+      // var u = localStorage.getItem("user") as User
+      // console.log(u.password)
+      // if(!isNull( this.user=JSON.parse(localStorage.getItem("user")))){
+        console.log(token)
+         setTimeout(() => this.router.navigate(['/home']), 20)
+      // }
+      // else{
+      // location.reload()
+      // }
 
   }
 

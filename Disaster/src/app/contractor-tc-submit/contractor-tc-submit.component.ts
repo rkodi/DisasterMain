@@ -122,6 +122,7 @@ export class ContractorTcSubmitComponent implements OnInit {
     }
     var timecard = new Timecard(sCode, contractor, this.time, this.total, false)
     this._TimecardService.createTimecard(timecard).subscribe()
-    setTimeout(() => this.router.navigate(['contractor']), 8);
+    setTimeout(() => this.router.navigate(['contractor']), 10)
+    
   }
 }

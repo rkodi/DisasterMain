@@ -38,7 +38,8 @@ export class CreateNewJobCodeComponent implements OnInit {
         response => console.log( response),
         error => console.error('Error!', error)
       );
-      this._router.navigate(['list'])
+      setTimeout(() => this._router.navigate(['list']), 10)
+      
       
   }
 
