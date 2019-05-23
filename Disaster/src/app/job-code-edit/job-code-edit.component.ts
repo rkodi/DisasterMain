@@ -3,6 +3,8 @@ import { jobsService } from '../jobs.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Jobs } from '../job';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { job } from '../Models/jobs.model';
+import { timeout } from 'q';
 
 @Component({
   selector: 'app-job-code-edit',
@@ -12,7 +14,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class JobCodeEditComponent implements OnInit {
 
 
-  public Job: Jobs;
+  public Job= new Jobs;
   public body: any;
 
   id;
@@ -32,8 +34,6 @@ export class JobCodeEditComponent implements OnInit {
       rate: [],
       maxHours: []
     });
-
-
     this._route.paramMap.subscribe((params: ParamMap) => {
     this.id = params.get('id');
       console.log(this.id)
@@ -42,22 +42,29 @@ export class JobCodeEditComponent implements OnInit {
       .subscribe(data => {
         let jobs = data;
         this.Job=jobs;
-
       })
-
- 
-      
     }
  
   onSubmit() {
-
-
+    if(this.editForm.value.code == null){
+      this.editForm.value.code = this.Job.code
+    }
+    if(this.editForm.value.description == null){
+      this.editForm.value.description = this.Job.description
+    }
+    if(this.editForm.value.rate == null){
+      this.editForm.value.rate = this.Job.rate
+    }
+    if(this.editForm.value.maxHours == null){
+      this.editForm.value.maxHours = this.Job.maxHours
+    }
     this._JobCode.updateJobs(this.editForm.value, this.id)
       .subscribe(
         response => console.log(response),
         error => console.error('Error!', error)
       );
-      this._router.navigate(['list'])
+      setTimeout(() => this._router.navigate(['list']), 10)
+      
   }
 
 }

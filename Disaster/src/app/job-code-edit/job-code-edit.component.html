@@ -4,25 +4,24 @@
 <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label>Job Code</label>
-    <input type="text" formControlName="code" class="form-control">      
+    <input type="text" formControlName="code" class="form-control" placeholder="{{Job.code}}">      
   </div>
 
   <div class="form-group">
     <label>Description</label>
-    <input type="text" formControlName="description" class="form-control">
+    <input type="text" formControlName="description" class="form-control" placeholder="{{Job.description}}">
   </div>    
 
   <div class="form-group">
     <label>Hourly Rate</label>      
-    <input type="text" formControlName="rate" class="form-control">
+    <input type="text" formControlName="rate" class="form-control"placeholder="{{Job.rate}}">
   </div>    
 
   <div class="form-group">
     <label>Max Hours Per Day</label>
-    <input type="text" formControlName="maxHours" class="form-control">
+    <input type="text" formControlName="maxHours" class="form-control" placeholder="{{Job.maxHours}}">
   </div>
 
 <button type="submit" style="float: center;">Update</button>
 <a [routerLink]="['/list']" id="machines"><span ></span>Back to Jobs</a>
-<!-- <button type="submit" (click)="updateCode" style="float: center;">Update1</button> -->
 </form>  
