@@ -11,60 +11,43 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class JobCodeManagementComponent implements OnInit {
 
-  
-  public jobs=[]; 
-  public body: any;
 
-  public id: any;
-  private editForm1: boolean = false;
+  public jobs = [];
+  public body: any;
+  public id: any;  
   public editForm: FormGroup;
 
   errorMsg;
 
-  
 
-  constructor(private _JobCode: jobsService, private fb: FormBuilder, private _router: Router, private _route: ActivatedRoute ) { }
+
+  constructor(private _JobCode: jobsService, private fb: FormBuilder, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
 
-    this.editForm = this.fb.group({
-      code: [],
-      description: [],
-      rate: [],
-      maxHours: []
-    });
+    this._JobCode.getJobs().subscribe(data => this.jobs = data,
+      error => this.errorMsg = error)
 
-    this._JobCode.getJobs().subscribe (data => this.jobs=data,
-      error => this.errorMsg=error)
-    
   }
 
   editJob(id: any) {
     this.id = id;
-    // console.log(this.id)
-    this._JobCode.getJobById(this.id).subscribe(data => {
-      console.log(data)});
-    
-    
     this._router.navigate(['list/edit', this.id])
-    
-    
-    // this.editForm1 = true;
 
   }
 
   deleteJob(id: string) {
     this.id = id;
     console.log(this.id)
-      this._JobCode.deleteJobs(this.id)
+    this._JobCode.deleteJobs(this.id)
       .subscribe(data => {
         console.log(data),
-        error => this.errorMsg = error.statusText;        
+          error => this.errorMsg = error.statusText;
       });
-      location.reload();
+    location.reload();
   }
 
- 
+
 
 
 }

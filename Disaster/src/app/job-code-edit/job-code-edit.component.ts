@@ -42,9 +42,15 @@ export class JobCodeEditComponent implements OnInit {
       .subscribe(data => {
         let jobs = data;
         this.Job=jobs;
+              
+      this.editForm = this.fb.group({
+        code: this.Job.code,
+        description: this.Job.description,
+        rate: this.Job.rate,
+        maxHours: this.Job.maxHours
+      });
 
       })
-
  
       
     }
