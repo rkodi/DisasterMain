@@ -32,7 +32,7 @@ export class ContractorTcSubmitComponent implements OnInit {
   ngOnInit() {
     this.timecardForm = this.fb.group({
       sitecode: ['', [Validators.required, Validators.minLength(3)]],
-      contractor: ["", [Validators.required]],
+      contractor: ['', [Validators.required]],
       machines: this.fb.array([this.initMachine()]),
       jobs: this.fb.array([this.initJob()])
     })
@@ -75,6 +75,10 @@ export class ContractorTcSubmitComponent implements OnInit {
     this.machineRents[i] = event.rent;
     this.machineMax[i] = event.maxHours;
     this.calculateMachineTotal(i);
+    console.log(this.machineRents);
+
+    console.log(this.machineMax);
+    
   }
   calculateMachineTotal(i) {
     if (this.timecardForm.get('machines').value[i].hoursUsed != undefined && this.machineRents[i] != undefined) {
