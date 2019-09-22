@@ -75,9 +75,6 @@ export class ContractorTcSubmitComponent implements OnInit {
     this.machineRents[i] = event.rent;
     this.machineMax[i] = event.maxHours;
     this.calculateMachineTotal(i);
-    console.log(this.machineRents);
-
-    console.log(this.machineMax);
     
   }
   calculateMachineTotal(i) {
@@ -89,11 +86,14 @@ export class ContractorTcSubmitComponent implements OnInit {
         this.machinevalid[i]=false
       }
       this.timecardForm.get('machines').value[i].total = this.timecardForm.get('machines').value[i].hoursUsed * Number(this.machineRents[i])
+      
     }
   }
   setJobRent(event, i) {
     this.jobRents[i] = event.rate;
+    console.log(this.jobRents);
     this.jobMax[i] = event.maxHours;
+    console.log(this.jobMax);
     this.calculateJobTotal(i);
   }
   calculateJobTotal(i) {
@@ -105,6 +105,7 @@ export class ContractorTcSubmitComponent implements OnInit {
         this.jobvalid[i]=false
       }
       this.timecardForm.get('jobs').value[i].total = this.timecardForm.get('jobs').value[i].hoursWorked * Number(this.jobRents[i])
+      console.log(this.total);
     }
   }
   onSubmit() {

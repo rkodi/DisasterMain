@@ -2,7 +2,7 @@
 <div class="container">
 <h2>Timesheet Submission</h2>
 <form [formGroup]="timecardForm" (ngSubmit)="onSubmit()">
-  <!-- <div>
+  <div>
     <label>Site Code</label>
     <input type="text" formControlName="sitecode" class="form-control">
     <small *ngIf="!timecardForm.controls.sitecode.valid &&submitted" class="text-danger">
@@ -16,7 +16,7 @@
     <small *ngIf="!timecardForm.controls.contractor.valid && submitted" class="text-danger">
       Name is required.
       </small>
-  </div> -->
+  </div>
 
   <h2>Job Entry</h2>
   <div formArrayName="jobs">
@@ -57,7 +57,7 @@
       </div>
     </div>
   </div>
-  <!-- <div class="margin-20">
+  <div class="margin-20">
     <a (click)="addJob()" style="cursor: default">
       Add Another job entry +
     </a>
@@ -106,6 +106,9 @@
       Add another machine entry +
     </a>
   </div>
-  <button type="submit">Submit form</button> -->
+  <button type="submit">Submit form</button> 
 </form>
 </div>
+
+Form Model: {{ timecardForm.controls.jobs.value | json }}
+
